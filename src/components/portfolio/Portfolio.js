@@ -7,17 +7,6 @@ import portPdfForge from '../../assets/port-pdfforge.png';
 
 const projects = [
   {
-    title: 'PDF Forge',
-    org: 'Founder · Web App',
-    badge: 'Live',
-    description:
-      'A privacy-first PDF editor that runs 100% in the browser. Add text, remove pages, strip passwords and images — all processed locally, nothing ever uploaded to a server.',
-    tags: ['Next.js', 'TypeScript', 'pdf-lib', 'Canvas'],
-    image: portPdfForge,
-    imagePosition: 'top',
-    links: [{ label: 'Live app', href: 'https://abhijitpatrapdf.vercel.app/', primary: true, external: true }],
-  },
-  {
     title: 'Paragon Automation',
     org: 'Juniper Networks (HPE)',
     badge: 'Enterprise',
@@ -56,6 +45,17 @@ const projects = [
     tags: ['React', 'Redux', 'TypeScript'],
     image: port4,
     links: [{ label: 'Visit', href: 'https://www.mediakind.com/', primary: true, external: true }],
+  },
+  {
+    title: 'PDF Forge',
+    org: 'Founder · Web App',
+    badge: 'Live',
+    description:
+      'A privacy-first PDF editor that runs 100% in the browser. Add text, remove pages, strip passwords and images — all processed locally, nothing ever uploaded to a server.',
+    tags: ['Next.js', 'TypeScript', 'pdf-lib', 'Canvas'],
+    image: portPdfForge,
+    imagePosition: 'top',
+    links: [{ label: 'Live app', href: 'https://abhijitpatrapdf.vercel.app/', primary: true, external: true }],
   },
   {
     title: 'Burger Ordering App',
