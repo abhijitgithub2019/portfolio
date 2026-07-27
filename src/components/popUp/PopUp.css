@@ -1,0 +1,47 @@
+.main {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+
+.child {
+    width: 55vw;
+    position: relative;
+    background: #fff;
+    border-radius: 5px;
+    margin: 70px auto;
+    padding: 20px;
+    height: 18vh;
+    transition: var(--transition);
+    
+}
+.child  h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.child > close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    text-decoration: none;
+}
+
+.child .content {
+    color: #188c3c;
+    font-size: 1.5rem;
+    overflow: auto;
+  }
+  .child a {
+    position: absolute;
+    top: 0;
+    right: 1vh;
+    font-size: 3rem;
+  }
+  .child a:hover {
+    color: aqua;
+  }
