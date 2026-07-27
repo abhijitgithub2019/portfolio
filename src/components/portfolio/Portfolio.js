@@ -3,8 +3,20 @@ import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import { TbTopologyStar3, TbServerBolt, TbClockShield } from 'react-icons/tb';
 import port1 from '../../assets/port1.png';
 import port4 from '../../assets/port4.jpeg';
+import portPdfForge from '../../assets/port-pdfforge.png';
 
 const projects = [
+  {
+    title: 'PDF Forge',
+    org: 'Founder · Web App',
+    badge: 'Live',
+    description:
+      'A privacy-first PDF editor that runs 100% in the browser. Add text, remove pages, strip passwords and images — all processed locally, nothing ever uploaded to a server.',
+    tags: ['Next.js', 'TypeScript', 'pdf-lib', 'Canvas'],
+    image: portPdfForge,
+    imagePosition: 'top',
+    links: [{ label: 'Live app', href: 'https://abhijitpatrapdf.vercel.app/', primary: true, external: true }],
+  },
   {
     title: 'Paragon Automation',
     org: 'Juniper Networks (HPE)',
@@ -74,7 +86,11 @@ const Portfolio = () => {
               style={p.cover ? { background: p.cover.gradient } : undefined}
             >
               {p.image ? (
-                <img src={p.image} alt={p.title} />
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  style={p.imagePosition ? { objectPosition: p.imagePosition } : undefined}
+                />
               ) : (
                 <span className="project__cover-icon">{p.cover.icon}</span>
               )}
