@@ -36,11 +36,13 @@ const channels = [
 const Contact = () => {
   const [popUp, setPopUp] = useState(false);
   const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
   const form = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
     setSending(true);
+    setError('');
     emailjs
       .sendForm('service_8ngsu7g', 'template_hrrt51s', form.current, 'zH404B9AMGquT_BIP')
       .then(
@@ -51,6 +53,7 @@ const Contact = () => {
         },
         () => {
           setSending(false);
+          setError("Couldn't send your message right now. Please email me directly at abhijit.patra224@gmail.com.");
         }
       );
   };
@@ -100,6 +103,7 @@ const Contact = () => {
           <button type="submit" className="btn btn-primary contact__submit" disabled={sending}>
             {sending ? 'Sending…' : 'Send message'} <FiSend />
           </button>
+          {error && <p className="contact__error" role="alert">{error}</p>}
         </form>
       </div>
 
