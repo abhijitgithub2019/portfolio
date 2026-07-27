@@ -1,71 +1,111 @@
-import React, { useRef, useState } from 'react';
-import {AiOutlineMail} from 'react-icons/ai';
-import {FiPhoneCall} from 'react-icons/fi';
+import { useRef, useState } from 'react';
+import './Contact.css';
+import { AiOutlineMail } from 'react-icons/ai';
+import { FiPhoneCall, FiSend } from 'react-icons/fi';
+import { BsLinkedin, BsGithub } from 'react-icons/bs';
 import emailjs from 'emailjs-com';
 import PopUp from '../popUp/PopUp';
-import './Contact.css';
+
+const channels = [
+  {
+    icon: <AiOutlineMail />,
+    label: 'Email',
+    value: 'abhijit.patra224@gmail.com',
+    action: { text: 'Send an email', href: 'mailto:abhijit.patra224@gmail.com' },
+  },
+  {
+    icon: <FiPhoneCall />,
+    label: 'Phone',
+    value: '+91 99167 62018',
+    action: { text: 'Call now', href: 'tel:+919916762018' },
+  },
+  {
+    icon: <BsLinkedin />,
+    label: 'LinkedIn',
+    value: 'in/abhijitpatra1',
+    action: { text: 'Connect', href: 'https://www.linkedin.com/in/abhijitpatra1/', external: true },
+  },
+  {
+    icon: <BsGithub />,
+    label: 'GitHub',
+    value: 'abhijitgithub2019',
+    action: { text: 'View profile', href: 'https://github.com/abhijitgithub2019', external: true },
+  },
+];
 
 const Contact = () => {
   const [popUp, setPopUp] = useState(false);
+  const [sending, setSending] = useState(false);
   const form = useRef();
+
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs.sendForm('service_8ngsu7g', 'template_hrrt51s', form.current, 'zH404B9AMGquT_BIP')
-      .then((result) => {
-          console.log(result.text);
+    setSending(true);
+    emailjs
+      .sendForm('service_8ngsu7g', 'template_hrrt51s', form.current, 'zH404B9AMGquT_BIP')
+      .then(
+        () => {
           setPopUp(true);
-      }, (error) => {
-          console.log(error.text);
-      });
-      e.target.reset();
+          setSending(false);
+          form.current.reset();
+        },
+        () => {
+          setSending(false);
+        }
+      );
   };
-
-  const close = ()=>{
-    setPopUp(false);
-  }
 
   return (
     <section id="contact">
-      <div id='contact_about'>
-      <h5>Get In Touch</h5>
-      <h2>Contact Me</h2>
+      <div className="section-head reveal">
+        <span className="eyebrow">Get in touch</span>
+        <h2>Let&apos;s build something great</h2>
+        <p>Open to lead frontend roles, freelance projects and collaborations. I usually reply within a day.</p>
       </div>
-     
-      <div className="container contact_conatiner">
-        <div className="contact_options">
-          <article className="contact_option">
-            <AiOutlineMail className='img_contact'></AiOutlineMail>
-            <h4>Email</h4>
-            <h5>abhijit.patra224@gmail.com</h5>
-            <a href="mailto:abhijit.patra224@gmail.com">Send an Email</a>
-          </article>
-          <article className="contact_option">
-            <FiPhoneCall className='img_contact'></FiPhoneCall>
-            <h4>Contact</h4>
-            <h5>+919916762018</h5>
-          </article>
+
+      <div className="container contact">
+        <div className="contact__channels reveal">
+          {channels.map((c) => (
+            <article key={c.label} className="contact__card">
+              <span className="contact__icon">{c.icon}</span>
+              <div className="contact__meta">
+                <h4>{c.label}</h4>
+                <p>{c.value}</p>
+              </div>
+              <a
+                href={c.action.href}
+                target={c.action.external ? '_blank' : undefined}
+                rel={c.action.external ? 'noreferrer' : undefined}
+                className="contact__link"
+              >
+                {c.action.text}
+              </a>
+            </article>
+          ))}
         </div>
-        <form ref={form} onSubmit={sendEmail}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Enter your name"
-          required
-        ></input>
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter your email "
-          required
-        ></input>
-        <textarea name='message' rows="7" placeholder='Enter your message here' required>
-        </textarea>
-        <button type='submit' className='btn btn-primary'>Send Message</button>
-      </form>
+
+        <form ref={form} onSubmit={sendEmail} className="contact__form reveal">
+          <div className="contact__field">
+            <label htmlFor="name">Name</label>
+            <input id="name" type="text" name="name" placeholder="Your full name" required />
+          </div>
+          <div className="contact__field">
+            <label htmlFor="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="you@company.com" required />
+          </div>
+          <div className="contact__field">
+            <label htmlFor="message">Message</label>
+            <textarea id="message" name="message" rows="6" placeholder="Tell me about your project or role…" required />
+          </div>
+          <button type="submit" className="btn btn-primary contact__submit" disabled={sending}>
+            {sending ? 'Sending…' : 'Send message'} <FiSend />
+          </button>
+        </form>
       </div>
-      {popUp ? <PopUp close={close}></PopUp> : " " }
+
+      {popUp && <PopUp close={() => setPopUp(false)} />}
     </section>
   );
-}
+};
 
 export default Contact;

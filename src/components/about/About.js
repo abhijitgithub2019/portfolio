@@ -1,49 +1,74 @@
-import React from 'react';
 import './About.css';
-import ME from '../../assets/me-about.jpeg';
-import {FaAward, FaUsers, FaFolderOpen} from 'react-icons/fa';
+import ME from '../../assets/me-about.jpg';
+import { FaAward, FaBuilding, FaFolderOpen, FaCheck } from 'react-icons/fa';
+import { yearsOfExperience } from '../../utils/experience';
+
+const stats = [
+  { icon: <FaAward />, value: `${yearsOfExperience}+`, label: 'Years of experience' },
+  { icon: <FaBuilding />, value: '5', label: 'Global companies' },
+  { icon: <FaFolderOpen />, value: '20+', label: 'Products shipped' },
+];
+
+const focus = [
+  'Frontend architecture & design systems',
+  'Performance: code-splitting, lazy loading, tree-shaking',
+  'Enterprise UI platforms & data-heavy dashboards',
+  'Team leadership, mentoring & code quality',
+];
 
 const About = () => {
   return (
-   <section id='about'>
-    <div id='about_me'>
-    <h5>Get to know</h5>
-    <h2>About Me</h2>
-    </div>
-    <div className="container about-container">
-      <div className="about-me">
-      <div className="about-image_me">
-           <img src={ME} alt='me' className='img_about'></img>
+    <section id="about">
+      <div className="section-head reveal">
+        <span className="eyebrow">Get to know me</span>
+        <h2>About Me</h2>
+        <p>Turning complex requirements into elegant, maintainable products.</p>
+      </div>
+
+      <div className="container about">
+        <div className="about__visual reveal">
+          <div className="about__frame">
+            <img src={ME} alt="Abhijit Patra" />
+          </div>
+        </div>
+
+        <div className="about__content reveal">
+          <div className="about__stats">
+            {stats.map((s) => (
+              <article key={s.label} className="about__stat">
+                <span className="about__stat-icon">{s.icon}</span>
+                <strong>{s.value}</strong>
+                <small>{s.label}</small>
+              </article>
+            ))}
+          </div>
+
+          <p className="about__lead">
+            I&apos;m a <strong>Lead Frontend Engineer</strong> with over {yearsOfExperience} years
+            of experience delivering scalable, high-performance web applications. I&apos;ve
+            built and led enterprise-grade UI platforms across network automation, media
+            streaming, and cloud systems — owning complex frontend architectures and
+            driving full-stack products from concept to production.
+          </p>
+          <p className="about__lead">
+            Currently at <strong>Juniper Networks (HPE)</strong>, I lead the frontend for
+            Paragon Automation. I&apos;m also the founder of <strong>Save Time</strong>, a
+            Chrome extension that helps professionals block distractions and stay focused.
+          </p>
+
+          <ul className="about__focus">
+            {focus.map((f) => (
+              <li key={f}>
+                <FaCheck /> {f}
+              </li>
+            ))}
+          </ul>
+
+          <a href="#contact" className="btn btn-primary">Let&apos;s work together</a>
         </div>
       </div>
-      <div className="about-content">
-        <div className="about-cards">
-          <article className='about-card'>
-            <FaAward className='about-icon'></FaAward>
-            <h5>Experience</h5>
-            <small> 10+ Years Work</small>
-          </article>
-          <article className='about-card'>
-            <FaUsers className='about-icon'></FaUsers>
-            <h5>Company</h5>
-            <small>4</small>
-          </article>
-          <article className='about-card'>
-            <FaFolderOpen className='about-icon'></FaFolderOpen>
-            <h5>Projects</h5>
-            <small>15+ completed</small>
-          </article>
-        </div>
-        <p>
-        Focused professional with 10+ years of experience and proven knowledge of web
-platform development and programming. Aiming to leverage my skill to successfully
-fill the front-end engineer role at your company.
-        </p>
-        <a href='#contact' className='btn btn-primary'>Let's talk</a>
-      </div>
-    </div>
-   </section>
-  )
-}
+    </section>
+  );
+};
 
 export default About;

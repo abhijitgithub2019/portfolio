@@ -1,33 +1,82 @@
-footer {
-    background: var(--color-primary);
-    padding: 4rem 0;
-    text-align: center;
-    font-size: 0.9rem;
-    margin-top: -56rem;
+.footer {
+  margin-top: 6rem;
+  padding: 3.5rem 0 2rem;
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, transparent, rgba(124, 92, 255, 0.06));
 }
 
-footer a {
-    color: var(--color-bg);
-}
-.footer_logo {
-    font-size: 2rem;
-    font-weight: 400;
-    margin-bottom: 2rem;
-    display: inline-block;
-}
-.links {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: o auto 3rem;
-}
-.footer_copyright {
-    margin-bottom: 2rem;
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
 }
 
-@media screen and (max-width: 600px) {
-    footer {
-        margin-top: 30rem;
-    }
+.footer__brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--white);
+}
+.footer__brand span {
+  color: var(--accent);
+}
+.footer__tagline {
+  color: var(--light);
+  font-size: 0.9rem;
+  max-width: 420px;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.6rem;
+  margin: 0.5rem 0;
+}
+.footer__links a {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  color: var(--light);
+}
+.footer__links a:hover {
+  color: var(--white);
+}
+
+.footer__socials {
+  display: flex;
+  gap: 1rem;
+}
+.footer__socials a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  color: var(--light);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+.footer__socials a:hover {
+  color: var(--accent);
+  border-color: var(--primary);
+  transform: translateY(-3px);
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  width: 100%;
+  border-top: 1px solid var(--border);
+}
+.footer__bottom small {
+  color: var(--muted);
+  font-size: 0.8rem;
 }

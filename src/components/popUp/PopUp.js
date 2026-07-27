@@ -1,20 +1,24 @@
-import React from 'react'
 import './PopUp.css';
-const PopUp = (props) => {
+import { FiCheck } from 'react-icons/fi';
+
+const PopUp = ({ close }) => {
   return (
-    <div>
-        <div className='main'>
-            
-            <div className="child">
-            <a className='close' href='#' onClick={()=>props.close()}>&times;</a>
-            <h2> Welcome to Abhijit's portfolio</h2>
-            <div className="content">
-                Thanks, Your Mail has sent successfully. 
-            </div>
-            </div>
-        </div>
+    <div className="popup" onClick={close}>
+      <div className="popup__card" onClick={(e) => e.stopPropagation()}>
+        <button className="popup__close" onClick={close} aria-label="Close">
+          &times;
+        </button>
+        <span className="popup__icon">
+          <FiCheck />
+        </span>
+        <h3>Message sent!</h3>
+        <p>Thanks for reaching out. I&apos;ve received your message and will get back to you shortly.</p>
+        <button className="btn btn-primary" onClick={close}>
+          Done
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default PopUp;

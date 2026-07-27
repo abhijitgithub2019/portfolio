@@ -1,47 +1,71 @@
-.main {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.7);
+.popup {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgba(3, 5, 15, 0.7);
+  backdrop-filter: blur(8px);
+  animation: overlayIn 0.3s ease;
+}
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-
-.child {
-    width: 55vw;
-    position: relative;
-    background: #fff;
-    border-radius: 5px;
-    margin: 70px auto;
-    padding: 20px;
-    height: 18vh;
-    transition: var(--transition);
-    
+.popup__card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  padding: 2.5rem 2rem 2rem;
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow);
+  animation: cardIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.child  h2 {
-    margin-top: 0;
-    color: #333;
-}
-
-.child > close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    text-decoration: none;
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to { opacity: 1; transform: none; }
 }
 
-.child .content {
-    color: #188c3c;
-    font-size: 1.5rem;
-    overflow: auto;
-  }
-  .child a {
-    position: absolute;
-    top: 0;
-    right: 1vh;
-    font-size: 3rem;
-  }
-  .child a:hover {
-    color: aqua;
-  }
+.popup__close {
+  position: absolute;
+  top: 0.9rem;
+  right: 1.1rem;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--light);
+  background: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.popup__close:hover {
+  color: var(--white);
+}
+
+.popup__icon {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 1.2rem;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  color: #04122a;
+  background: var(--gradient);
+  box-shadow: 0 0 30px rgba(77, 181, 255, 0.5);
+}
+
+.popup__card h3 {
+  font-size: 1.4rem;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+}
+.popup__card p {
+  color: var(--light);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}

@@ -1,20 +1,71 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Nav.css';
-import {AiFillHome, AiOutlineUser} from 'react-icons/ai';
-import {BiBookAlt, BiSolidContact} from 'react-icons/bi';
-import {FcServices} from 'react-icons/fc';
+import resume from '../../assets/resume.pdf';
+
+const links = [
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'portfolio', label: 'Work' },
+  { id: 'contact', label: 'Contact' },
+];
 
 const Nav = () => {
-  const [activeNav, setActive] = useState('#');
+  const [active, setActive] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      const pos = window.scrollY + window.innerHeight / 3;
+      let current = 'home';
+      links.forEach(({ id }) => {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= pos) current = id;
+      });
+      setActive(current);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-   <nav>
-      <a href='#' onClick={()=> setActive('#')} className={activeNav ==='#'? 'active' : ''}> <AiFillHome></AiFillHome></a>
-      <a href='#about' onClick={()=> setActive('#about')} className={activeNav ==='#about'? 'active' : ''}> <AiOutlineUser></AiOutlineUser></a>
-      <a href='#experience' onClick={()=> setActive('#experience')} className={activeNav ==='#experience'? 'active' : ''}> <BiBookAlt></BiBookAlt></a>
-      <a href='#portfolio' onClick={()=> setActive('#portfolio')} className={activeNav ==='#portfolio'? 'active' : ''}> <FcServices></FcServices></a>
-      <a href='#contact' onClick={()=> setActive('#contact')} className={activeNav ==='#contact'? 'active' : ''}> <BiSolidContact></BiSolidContact></a>
-   </nav>
-  )
-}
+    <header className={`navbar ${scrolled ? 'is-scrolled' : ''}`}>
+      <div className="navbar__inner container">
+        <a href="#home" className="navbar__brand" onClick={() => setOpen(false)}>
+          Abhijit<span>.</span>
+        </a>
+
+        <nav className={`navbar__links ${open ? 'open' : ''}`}>
+          {links.map(({ id, label }) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className={active === id ? 'active' : ''}
+              onClick={() => setOpen(false)}
+            >
+              {label}
+            </a>
+          ))}
+          <a href={resume} download className="btn btn-primary navbar__cta">
+            Resume
+          </a>
+        </nav>
+
+        <button
+          className={`navbar__burger ${open ? 'open' : ''}`}
+          aria-label="Toggle menu"
+          onClick={() => setOpen((o) => !o)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+  );
+};
 
 export default Nav;

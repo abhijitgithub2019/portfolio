@@ -1,70 +1,177 @@
-.experience_content {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 2rem;
+.experience {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 2.5rem;
+  align-items: start;
 }
 
-.experience_container  > div {
-    background: var(--color-bg-variant);
-    padding:  2.5rem 5rem;
-    border-radius: 2rem;
-    border: 1px solid transparent;
+/* Timeline */
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-left: 0.5rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--primary-2), transparent);
+  opacity: 0.4;
 }
 
-#experience {
-    position: relative;
-    bottom: 6rem;
+.timeline__item {
+  position: relative;
+  display: flex;
+  gap: 1.25rem;
+}
+.timeline__dot {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #04122a;
+  background: var(--gradient);
+  box-shadow: 0 0 0 5px rgba(6, 7, 19, 1), 0 0 20px rgba(77, 181, 255, 0.5);
+  font-size: 0.95rem;
 }
 
-.exp_header {
-    position: relative;
-    left: 46vw;
+.timeline__card {
+  flex: 1;
+  padding: 1.4rem 1.5rem;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: var(--transition);
 }
-.experience_container > div h3 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--color-primary);
+.timeline__card:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-2);
+  transform: translateX(4px);
+}
+.timeline__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.timeline__top h3 {
+  font-size: 1.12rem;
+  color: var(--white);
+}
+.timeline__period {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.timeline__company {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--primary);
+  margin: 0.15rem 0 0.9rem;
+}
+.timeline__card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.timeline__card li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.88rem;
+  color: var(--light);
+}
+.timeline__card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.timeline__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+.timeline__tags span {
+  font-size: 0.72rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  color: var(--light);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
 }
 
-.experience_details {
-    display: flex;
-    gap: 1rem;
-
+/* Skills */
+.skills {
+  position: sticky;
+  top: 6rem;
+  padding: 1.6rem;
+  border-radius: var(--radius);
+  background: var(--gradient-soft);
+  border: 1px solid var(--border);
+}
+.skills__title {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  color: var(--white);
+}
+.skills__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: rgba(6, 7, 19, 0.4);
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--light);
+  transition: var(--transition);
+}
+.skill:hover {
+  color: var(--white);
+  border-color: var(--primary);
+  transform: translateY(-3px);
+}
+.skill__icon {
+  color: var(--accent);
+  font-size: 1.1rem;
+  display: inline-flex;
 }
 
-.experience_icon {
-    margin-top: 6px;
-    color: var(--color-primary);
+@media screen and (max-width: 920px) {
+  .experience {
+    grid-template-columns: 1fr;
+  }
+  .skills {
+    position: static;
+  }
 }
 
-@media screen and (max-width: 1024px) {
-    .experience_container > div {
-        width: 80%;
-        padding: 2rem;
-        margin: 0 auto;
-    }
-    .experience_content {
-        padding: 1rem;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .experience_container > div {
-        width: 100%;
-        padding: 2rem 1rem;
-    }
-
-    .experience_content { 
-        grid-template-columns: 1fr 1fr;
-    }
-    #experience {
-        bottom: 0rem;
-        height: 95vh;
-    }
-    section {
-        height: 0vh;
-    }
-    .exp_header {
-        left: 28vw;
-    }
+@media screen and (max-width: 500px) {
+  .timeline__card {
+    padding: 1.1rem 1.1rem;
+  }
+  .timeline__item {
+    gap: 0.9rem;
+  }
 }
