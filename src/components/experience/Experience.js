@@ -11,7 +11,7 @@ const timeline = [
   {
     role: 'Senior Software Engineer 4 (Tech Lead)',
     company: 'Juniper Networks (HPE)',
-    period: 'Aug 2021 — Present',
+    period: 'Aug 2022 — Present',
     points: [
       'Lead frontend for Paragon Automation, a cloud-native network automation suite.',
       'Set UI architecture standards, mentor engineers, and drive quality through reviews.',
@@ -47,7 +47,7 @@ const timeline = [
   {
     role: 'Web Developer',
     company: 'Tata Consultancy Services',
-    period: 'Jan 2014 — Jul 2017',
+    period: 'Jan 2015 — Jul 2017',
     points: [
       'Built the Online Integrated Project Resource Application computing estimates from bill rates.',
       'Refactored client-side validation, reducing dependencies and improving stability.',
