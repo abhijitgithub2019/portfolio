@@ -5,7 +5,6 @@ import { SiLeetcode } from 'react-icons/si';
 import { FaYoutube } from 'react-icons/fa';
 import { FiArrowUpRight } from 'react-icons/fi';
 import me from '../../assets/me.jpg';
-import resume from '../../assets/resume.pdf';
 import { yearsOfExperience } from '../../utils/experience';
 
 const roles = [
@@ -13,6 +12,7 @@ const roles = [
   'React & TypeScript Specialist',
   'UI Architect',
   'Full-Stack Product Builder',
+  'Enthusiastic AI Reader',
 ];
 
 const socials = [
@@ -60,9 +60,6 @@ const Header = () => {
           <div className="header__cta reveal">
             <a href="#portfolio" className="btn btn-primary">
               View my work <FiArrowUpRight />
-            </a>
-            <a href={resume} download className="btn">
-              Download Resume
             </a>
           </div>
 

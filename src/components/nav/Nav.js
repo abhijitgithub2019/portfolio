@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './Nav.css';
-import resume from '../../assets/resume.pdf';
 
 const links = [
   { id: 'home', label: 'Home' },
@@ -49,9 +48,6 @@ const Nav = () => {
               {label}
             </a>
           ))}
-          <a href={resume} download className="btn btn-primary navbar__cta">
-            Resume
-          </a>
         </nav>
 
         <button

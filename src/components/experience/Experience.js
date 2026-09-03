@@ -3,7 +3,7 @@ import { FiBriefcase } from 'react-icons/fi';
 import { yearsOfExperience } from '../../utils/experience';
 import {
   SiJavascript, SiTypescript, SiReact, SiRedux, SiNextdotjs,
-  SiNodedotjs, SiHtml5, SiCss3, SiJest, SiWebpack, SiGraphql,
+  SiNodedotjs, SiHtml5, SiCss3, SiJest, SiWebpack, SiGraphql, SiPython,
 } from 'react-icons/si';
 import { TbBinaryTree } from 'react-icons/tb';
 
@@ -60,6 +60,7 @@ const timeline = [
 const skills = [
   { name: 'JavaScript', icon: <SiJavascript /> },
   { name: 'TypeScript', icon: <SiTypescript /> },
+  { name: 'Python', icon: <SiPython /> },
   { name: 'React', icon: <SiReact /> },
   { name: 'Redux', icon: <SiRedux /> },
   { name: 'Next.js', icon: <SiNextdotjs /> },
